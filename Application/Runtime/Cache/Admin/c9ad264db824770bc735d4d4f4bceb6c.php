@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit();?><!--_meta 作为公共模版分离出去-->
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -24,9 +24,18 @@
 <script>DD_belatedPNG.fix('*');</script><![endif]-->
 <!--/meta 作为公共模版分离出去-->
 
-<title>商品列表 - 商品管理 - Healthtrade后台</title>
+<title>商品展示 - 商品管理</title>
 <meta name="keywords" content="H-ui.admin v3.0,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.0，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+<style type="text/css">  
+            div img{  
+                cursor: pointer;  
+                transition: all 0.6s;  
+            }  
+            div img:hover{  
+                transform: scale(1.9);  
+            }  
+        </style>  
 </head>
 <body>
 <!--_header 作为公共模版分离出去-->
@@ -93,85 +102,58 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
-	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i>首页
-		<span class="c-gray en">&gt;</span>
-		商品管理
-		<span class="c-gray en">&gt;</span>
-		添加商品
-		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
-	</nav>
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 商品管理 <span class="c-gray en">&gt;</span> 展示商品 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="Hui-article">
-		<form class="form form-horizontal" id="form-article-add" action="/index.php/Admin/Goods/add" method="post" enctype="multipart/form-data">
-		<div class="row cl" align="center" >
-		<a href="/index.php/Admin/Goods/index" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe67f;</i>&emsp;返回列表页&emsp;</a>
-				&emsp;&emsp;<span class="btn btn-default radius"><sup><font color="red" >*</font></sup>必填项</span>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品名称：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value=""  required="required" placeholder="请填写商品名" id="" name="goods_name">
+		<article class="cl pd-20">
+			<div class="text-c">
+					<button type="submit" class="btn btn-success" id="" name=""> 下面就是商品详情啦</button>
 			</div>
-		</div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
+				<a href="/index.php/Admin/Goods/edit" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6df;</i>&emsp;编&emsp;辑</a> 
+				<a href="/index.php/Admin/Goods/index" class="btn btn-primary radius"> <i class="Hui-iconfont">&#xe67f;</i>&emsp;返回商品列表</a></span> 
+			<span class="r" >
+				<a href="/index.php/Admin/Goods/add" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe600;</i>&emsp;添加商品</a>
+			</span>
+			 </div>
+			<table class="table table-border table-bordered table-bg" >
+				<thead>
+					<tr>
+						<td width="80">商品名称:</td>
+						<td><?php echo ($data["goods_name"]); ?></td>
+					</tr>
+					<tr>
+						<td>商品类型:</td>
+						<td><?php echo ($data["cate_name"]); ?></td>
+					</tr>
+					<tr>
+						<td>商品原价:</td>
+						<td><?php echo ($data["goods_ori_price"]); ?></td>
+					</tr>
+					<tr>
+						<td>商品折扣价:</td>
+						<td><?php echo ($data["goods_price"]); ?></td>
+					</tr>
+					<tr>
+						<td>商品数量:</td>
+						<td><?php echo ($data["goods_number"]); ?></td>
+					</tr>
+					<tr>
+						<td>商品Logo:</td>
+						<td>
+						<div>
+							<img src="<?php echo ($data["goods_small_img"]); ?>" alt="" class="big">
+						</div>
+						</td>
 
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品原价：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="请填写商品原价" required="required" id="" name="goods_ori_price">
-			</div>
-		</div>
-
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品折扣价：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" required="required" placeholder="请填写商品折后价" id="" name="goods_price">
-			</div>
-		</div>
-
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品数量：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" required="required" placeholder="请填写商品数量" id="" name="goods_number">
-			</div>
-		</div>
-
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品类型：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="cate_id" class="select">
-					<option value="4">==选择类型==</option>
-					<?php if(is_array($cate)): $i = 0; $__LIST__ = $cate;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v["id"]); ?>"><?php echo ($v["cate_name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
-				</select>
-				</span> </div>
-		</div>
-
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">缩略图：</label>
-					<input type="file" name="goods_big_img" id="">
-		</div>
-
-		<!-- 多文件上传 -->
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品相册：</label>
-					<input type="file" name="pics[]" id="">
-					<input type="file" name="pics[]" id="">
-					<input type="file" name="pics[]" id="">
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品简介：</label>
-			<div class="formControls col-xs-8 col-sm-9"> 
-				<textarea id="editor" name='goods_introduce' style="width:800px;height:400px;"></textarea>
-			</div>
-		</div>
-		<div class="row cl">
-			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button class="btn btn-primary radius" type="submit" id="addgood"><i class="Hui-iconfont">&#xe632;</i> 点击添加</button>
-				
-			</div>
-		</div>
-	</form>
+					</tr>
+					<tr>
+						<td>商品简介:</td>
+						<td><?php echo ($data["goods_introduce"]); ?></td>
+					</tr>
+			</table>
+		</article>
 	</div>
 </section>
-
 
 <!--_footer 作为公共模版分离出去-->
 
@@ -185,25 +167,19 @@
 <script type="text/javascript" src="/Public/Admin/static/h-ui.admin/js/H-ui.admin.page.js"></script> 
 <script type="text/javascript" src="/Public/Admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 
+
 <!--/_footer /作为公共模版分离出去-->
 
-<!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="/Public/Admin/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
-<script type="text/javascript" src="/Public/Admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
-<script type="text/javascript" src="/Public/Admin/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
-<script type="text/javascript" src="/Public/Admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>   
-<script type="text/javascript" src="/Public/Admin/lib/webuploader/0.1.5/webuploader.min.js"></script> 
-<script type="text/javascript" src="/Public/Admin/lib/ueditor/1.4.3/ueditor.config.js"></script> 
-<script type="text/javascript" src="/Public/Admin/lib/ueditor/1.4.3/ueditor.all.min.js"> </script> 
-<script type="text/javascript" src="/Public/Admin/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
-<script type="text/javascript">
-$(function(){
 
-	//实例化编辑器
-      var ue=UE.getEditor('editor');
-	
-});
+<!--请在下方写此页面业务相关的脚本-->
+
+<script type="text/javascript">
+
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
+
+<!-- 仿百度图片放大效果 -->
+
+<!-- 仿百度图片放大效果 -->
 </body>
 </html>

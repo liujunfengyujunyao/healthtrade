@@ -132,7 +132,7 @@
                         </li>
                         <li><a href="/index.php/Home/List/index">限量款</a></li>
                         <li class="parent">
-                            <a href="#">diamond系列</a>
+                            <a href="#">Healthtrade系列</a>
                             <ul class="sub">
                             <?php if(is_array($series)): $i = 0; $__LIST__ = $series;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?><li><a href="/index.php/Home/List/index/series_id/<?php echo ($val["id"]); ?>"><?php echo ($val["series_name"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
                             </ul>

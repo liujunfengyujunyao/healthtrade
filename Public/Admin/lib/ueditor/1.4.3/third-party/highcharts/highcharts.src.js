@@ -1493,7 +1493,7 @@ defaultLabelOptions = {
 defaultOptions = {
 	colors: ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970',
 		'#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
-	symbols: ['circle', 'diamond', 'square', 'triangle', 'triangle-down'],
+	symbols: ['circle', 'Healthtrade', 'square', 'triangle', 'triangle-down'],
 	lang: {
 		loading: 'Loading...',
 		months: ['January', 'February', 'March', 'April', 'May', 'June', 'July',

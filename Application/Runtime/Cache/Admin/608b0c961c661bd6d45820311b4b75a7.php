@@ -24,7 +24,7 @@
 <script>DD_belatedPNG.fix('*');</script><![endif]-->
 <!--/meta 作为公共模版分离出去-->
 
-<title>商品列表 - 商品管理 - Healthtrade后台</title>
+<title>商品列表 - 商品管理 </title>
 <meta name="keywords" content="H-ui.admin v3.0,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.0，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
@@ -97,40 +97,43 @@
 		<span class="c-gray en">&gt;</span>
 		商品管理
 		<span class="c-gray en">&gt;</span>
-		添加商品
+		编辑商品
 		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
 	</nav>
 	<div class="Hui-article">
-		<form class="form form-horizontal" id="form-article-add" action="/index.php/Admin/Goods/add" method="post" enctype="multipart/form-data">
+		<form class="form form-horizontal" id="form-article-add" action="/index.php/Admin/Goods/edit" method="post" enctype="multipart/form-data">
+		<!-- 隐藏域为商品id -->
+		
+		<input type="hidden" name="id" value="<?php echo ($data["id"]); ?>">
 		<div class="row cl" align="center" >
 		<a href="/index.php/Admin/Goods/index" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe67f;</i>&emsp;返回列表页&emsp;</a>
-				&emsp;&emsp;<span class="btn btn-default radius"><sup><font color="red" >*</font></sup>必填项</span>
+				&emsp;&emsp;<span class="btn btn-default radius"><i class="Hui-iconfont">&#xe6df;</i>&emsp;这里是商品编辑</span>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value=""  required="required" placeholder="请填写商品名" id="" name="goods_name">
+				<input type="text" class="input-text" value="<?php echo ($data["goods_name"]); ?>" id="" name="goods_name">
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品原价：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="请填写商品原价" required="required" id="" name="goods_ori_price">
+				<input type="text" class="input-text" value="<?php echo ($data["goods_ori_price"]); ?>"  id="" name="goods_ori_price">
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品折扣价：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" required="required" placeholder="请填写商品折后价" id="" name="goods_price">
+				<input type="text" class="input-text" value="<?php echo ($data["goods_price"]); ?>"  id="" name="goods_price">
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品数量：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" required="required" placeholder="请填写商品数量" id="" name="goods_number">
+				<input type="text" class="input-text" value="<?php echo ($data["goods_number"]); ?>"  id="" name="goods_number">
 			</div>
 		</div>
 
@@ -139,7 +142,7 @@
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
 				<select name="cate_id" class="select">
 					<option value="4">==选择类型==</option>
-					<?php if(is_array($cate)): $i = 0; $__LIST__ = $cate;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v["id"]); ?>"><?php echo ($v["cate_name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+					<?php if(is_array($cate_info)): $i = 0; $__LIST__ = $cate_info;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v["id"]); ?>" <?php if( $v["id"] == $data["cate_id"] ): ?>selected="selected"<?php endif; ?> ><?php echo ($v["cate_name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 				</select>
 				</span> </div>
 		</div>
@@ -148,23 +151,15 @@
 			<label class="form-label col-xs-4 col-sm-2">缩略图：</label>
 					<input type="file" name="goods_big_img" id="">
 		</div>
-
-		<!-- 多文件上传 -->
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品相册：</label>
-					<input type="file" name="pics[]" id="">
-					<input type="file" name="pics[]" id="">
-					<input type="file" name="pics[]" id="">
-		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">商品简介：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
-				<textarea id="editor" name='goods_introduce' style="width:800px;height:400px;"></textarea>
+				<textarea id="editor" name='goods_introduce' style="width:800px;height:400px;"><?php echo ($data["goods_introduce"]); ?></textarea>
 			</div>
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button class="btn btn-primary radius" type="submit" id="addgood"><i class="Hui-iconfont">&#xe632;</i> 点击添加</button>
+				<button class="btn btn-primary radius" type="submit" id="addgood"><i class="Hui-iconfont">&#xe632;</i> 点击修改</button>
 				
 			</div>
 		</div>
@@ -196,14 +191,32 @@
 <script type="text/javascript" src="/Public/Admin/lib/ueditor/1.4.3/ueditor.config.js"></script> 
 <script type="text/javascript" src="/Public/Admin/lib/ueditor/1.4.3/ueditor.all.min.js"> </script> 
 <script type="text/javascript" src="/Public/Admin/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+
+
+<!-- 引入zyupload上传组件 -->
+<script type="text/javascript" src="/Public/Admin/zyupload/core/zyFile.js"></script> 
+<script type="text/javascript" src="/Public/Admin/zyupload/control/css/zyUpload.css"></script> 
+<script type="text/javascript" src="/Public/Admin/zyupload/control/js/zyUpload.js"></script> 
+<!-- 引入zyupload上传组件 -->
 <script type="text/javascript">
 $(function(){
 
 	//实例化编辑器
       var ue=UE.getEditor('editor');
-	
+
+      //异步删除图片
+      $('.pics_del').click(function(){
+      	var _this=this;
+      	$.ajax({
+      		'url':"/index.php/Admin/Goods/ajaxdel",
+      		'type':'post',
+      		'data':""
+      	});
+      });
+
 });
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
+
 </body>
 </html>

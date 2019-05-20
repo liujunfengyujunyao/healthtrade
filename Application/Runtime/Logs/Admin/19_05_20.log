@@ -38,3 +38,9 @@ ERR: 无法加载控制器:Cate
 [ 2019-05-20T13:50:28+08:00 ] 192.168.1.144 /index.php/Admin/Cate/index
 ERR: 无法加载控制器:Cate
 
+[ 2019-05-20T14:23:22+08:00 ] 192.168.1.144 /index.php/Admin/Manager/index
+ERR: syntax error, unexpected 'public' (T_PUBLIC), expecting end of file
+
+[ 2019-05-20T14:23:27+08:00 ] 192.168.1.144 /index.php/Admin/Manager/add
+ERR: syntax error, unexpected 'public' (T_PUBLIC), expecting end of file
+
