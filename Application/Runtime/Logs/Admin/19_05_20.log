@@ -1,0 +1,40 @@
+[ 2019-05-20T13:22:25+08:00 ] 192.168.1.144 /index.php/Admin/Index/index.html
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and is_nav=1 )' at line 1
+ [ SQL语句 ] : SELECT * FROM `he_auth` WHERE ( pid = 0 and id in() and is_nav=1 ) 
+
+[ 2019-05-20T13:35:57+08:00 ] 192.168.1.144 /index.php/Admin/Index/index.html
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and is_nav=1 )' at line 1
+ [ SQL语句 ] : SELECT * FROM `he_auth` WHERE ( pid = 0 and id in() and is_nav=1 ) 
+
+[ 2019-05-20T13:38:19+08:00 ] 192.168.1.144 /index.php/Admin/Index/index.html
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and is_nav=1 )' at line 1
+ [ SQL语句 ] : SELECT * FROM `he_auth` WHERE ( pid = 0 and id in() and is_nav=1 ) 
+
+[ 2019-05-20T13:38:38+08:00 ] 192.168.1.144 /index.php/Admin
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and is_nav=1 )' at line 1
+ [ SQL语句 ] : SELECT * FROM `he_auth` WHERE ( pid = 0 and id in() and is_nav=1 ) 
+
+[ 2019-05-20T13:38:49+08:00 ] 192.168.1.144 /index.php/admin
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and is_nav=1 )' at line 1
+ [ SQL语句 ] : SELECT * FROM `he_auth` WHERE ( pid = 0 and id in() and is_nav=1 ) 
+
+[ 2019-05-20T13:39:48+08:00 ] 192.168.1.144 /index.php/admin
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and is_nav=1 )' at line 1
+ [ SQL语句 ] : SELECT * FROM `he_auth` WHERE ( pid = 0 and id in() and is_nav=1 ) 
+
+[ 2019-05-20T13:40:25+08:00 ] 192.168.1.144 /index.php/Admin/Manager/index
+ERR: syntax error, unexpected 'public' (T_PUBLIC), expecting end of file
+
+[ 2019-05-20T13:44:19+08:00 ] 192.168.1.144 /index.php/Admin/Goods/index
+ERR: 1146:Table 'healthtrade.dia_category' doesn't exist
+ [ SQL语句 ] : SELECT t1.*,t2.cate_name FROM he_goods t1 left join dia_category t2 on t1.cate_id = t2.id  
+
+[ 2019-05-20T13:49:54+08:00 ] 192.168.1.144 /index.php/Admin/Cate/index
+ERR: 无法加载控制器:Cate
+
+[ 2019-05-20T13:50:26+08:00 ] 192.168.1.144 /index.php/Admin/Cate/index
+ERR: 无法加载控制器:Cate
+
+[ 2019-05-20T13:50:28+08:00 ] 192.168.1.144 /index.php/Admin/Cate/index
+ERR: 无法加载控制器:Cate
+

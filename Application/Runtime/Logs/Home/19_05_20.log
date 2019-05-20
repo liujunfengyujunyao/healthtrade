@@ -1,0 +1,7 @@
+[ 2019-05-20T13:18:39+08:00 ] 192.168.1.144 /
+ERR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'123.125.5.211' (using password: YES)
+
+[ 2019-05-20T13:56:20+08:00 ] 192.168.1.144 /index.php/Home/Index/detail/id/2
+ERR: 1146:Table 'healthtrade.dia_series' doesn't exist
+ [ SQL语句 ] : SELECT t1.*,t2.series_conception FROM he_goods t1 left join dia_series as t2 on t2.id=t1.series_id  WHERE ( t1.id=2 ) LIMIT 1  
+
