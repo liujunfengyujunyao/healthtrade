@@ -44,3 +44,14 @@ ERR: syntax error, unexpected 'public' (T_PUBLIC), expecting end of file
 [ 2019-05-20T14:23:27+08:00 ] 192.168.1.144 /index.php/Admin/Manager/add
 ERR: syntax error, unexpected 'public' (T_PUBLIC), expecting end of file
 
+[ 2019-05-20T16:13:19+08:00 ] 192.168.1.144 /index.php/Admin/Manager/index
+ERR: syntax error, unexpected 'public' (T_PUBLIC), expecting end of file
+
+[ 2019-05-20T16:26:30+08:00 ] 192.168.1.144 /admin
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and is_nav=1 )' at line 1
+ [ SQL语句 ] : SELECT * FROM `he_auth` WHERE ( pid = 0 and id in() and is_nav=1 ) 
+
+[ 2019-05-20T16:28:05+08:00 ] 192.168.1.144 /index.php/Admin/Review/index
+ERR: 1054:Unknown column 't2.email' in 'field list'
+ [ SQL语句 ] : SELECT t1.*,t2.username,t2.phone,t2.email FROM he_review t1 left join he_user as t2 on t1.user_id=t2.id  
+

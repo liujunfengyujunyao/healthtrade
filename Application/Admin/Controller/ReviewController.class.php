@@ -3,7 +3,7 @@ namespace Admin\Controller;
 use Think\Controller;
 class ReviewController extends CommonController{
 	public function index(){
-		$data = D('Review')->alias('t1')->field('t1.*,t2.username,t2.phone,t2.email')->join('left join he_user as t2 on t1.user_id=t2.id')->select();
+		$data = D('Review')->alias('t1')->field('t1.*,t2.username,t2.phone')->join('left join he_user as t2 on t1.user_id=t2.id')->select();
 		$this->assign('data',$data);
 		$this->display();
 	}

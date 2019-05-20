@@ -1,5 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit();?>﻿
-<!--_meta 作为公共模版分离出去-->
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -25,7 +24,7 @@
 <script>DD_belatedPNG.fix('*');</script><![endif]-->
 <!--/meta 作为公共模版分离出去-->
 
-<title>商品列表 - 商品管理 - Healthtrade后台</title>
+<title>文章列表 - 文章管理 - Healthtrade后台</title>
 <meta name="keywords" content="H-ui.admin v3.0,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.0，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
@@ -94,41 +93,60 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
-	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i>首页
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页
 		<span class="c-gray en">&gt;</span>
-		分类管理
+		文章管理
 		<span class="c-gray en">&gt;</span>
-		分类列表
+		文章列表
 		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
 	</nav>
 	<div class="Hui-article">
 		<article class="cl pd-20">
+			<div class="text-c">
+				<span class="select-box inline">
+				<select name="" class="select">
+					<option value="0">全部分类</option>
+					<option value="1">分类一</option>
+					<option value="2">分类二</option>
+				</select>
+				</span>
+				日期范围：
+				<input type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}'})" id="logmin" class="input-text Wdate" style="width:120px;">
+				-
+				<input type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d'})" id="logmax" class="input-text Wdate" style="width:120px;">
+				<input type="text" name="" id="" placeholder=" 资讯名称" style="width:250px" class="input-text">
+				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜资讯</button>
+			</div>
 			<div class="cl pd-5 bg-1 bk-gray mt-20">
 				<span class="l">
-				<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
-				<a class="btn btn-primary radius" data-title="添加商品" _href="add.html" href="/index.php/Admin/Category/add"><i class="Hui-iconfont">&#xe600;</i> 添加分类</a>
+				<a href="javascript:;" id="delAll" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+				<a class="btn btn-primary radius" data-title="添加资讯" _href="article-add.html"  href="/index.php/Admin/Article/add"><i class="Hui-iconfont">&#xe600;</i> 添加资讯</a>
 				</span>
-				<span class="r">共有数据：<strong><?php echo ($row); ?></strong> 条</span>
 			</div>
 			<div class="mt-20">
 				<table class="table table-border table-bordered table-bg table-hover table-sort">
 					<thead>
 						<tr class="text-c">
 							<th width="25"><input type="checkbox" name="" value=""></th>
-							<th width="60">ID</th>
-							<th width="80">分类名称</th>
+							<th width="80">ID</th>
+							<th style="width: 150px;">标题</th>
+							<th width="80">分类</th>
+							<th width="120">作者</th>
 							<th width="120">操作</th>
 						</tr>
 					</thead>
 					<tbody>
-					<?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr class="text-c">
-							<td><input type="checkbox" value="" name=""></td>
-							<td><?php echo ($v["id"]); ?></td>
-							<td class="text-l"><a href="javascript:;" ><center><b><?php echo ($v["cate_name"]); ?></b></center></a></td>
-							<td class="f-14 td-manage">
-								<a style="text-decoration:none" class="ml-5" href="/index.php/Admin/Category/edit/id/<?php echo ($v["id"]); ?>" title="商品编辑"><i class="Hui-iconfont">&#xe6df;编辑</i></a>
-								<a style="text-decoration:none" class="ml-5" onClick="cate_del(this,'<?php echo ($v["id"]); ?>')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;删除</i></a>
-								</td>
+					<?php if(is_array($article)): $i = 0; $__LIST__ = $article;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vol): $mod = ($i % 2 );++$i;?><tr class="text-c">
+							<td><input type="checkbox" value="<?php echo ($vol["id"]); ?>" name="del_one" class="del_one"></td>
+							<td><?php echo ($vol["id"]); ?></td>
+							<td><?php echo ($vol["article_title"]); ?></td>	
+							<td class="text-l">
+								<u style="cursor:pointer" class="text-primary" onClick="article_edit('查看','article-zhang.html','10001')" title="查看"><?php echo ($vol["series_name"]); ?></u>
+							</td>
+							<td><?php echo ($vol["article_author"]); ?></td>
+							<td class="f-14 td-manage"><a style="text-decoration:none" onClick="article_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>
+								<a style="text-decoration:none" class="ml-5"  href="/index.php/Admin/Article/edit/id/<?php echo ($vol["id"]); ?>" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
+								<a style="text-decoration:none" class="ml-5" onclick="if(confirm('确认删除？')) location.href='/index.php/Admin/Article/del/id/<?php echo ($vol["id"]); ?>'" href="/index.php/Admin/Article/del/id/<?php echo ($vol["id"]); ?>" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 						</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 					</tbody>
 				</table>
@@ -136,7 +154,6 @@
 		</article>
 	</div>
 </section>
-
 
 <!--_footer 作为公共模版分离出去-->
 
@@ -157,37 +174,124 @@
 <script type="text/javascript" src="/Public/Admin/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
 $('.table-sort').dataTable({
-	"aaSorting": [[ 1, "asc" ]],//默认第几个排序
+	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
 	"bStateSave": true,//状态保存
 	"aoColumnDefs": [
-		// {"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-		{"orderable":false,"aTargets":[0,3]}// 不参与排序的列
+		//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		// {"orderable":false,"aTargets":[0,8]}// 不参与排序的列
 	]
 });
+$('#delAll').click(function(){
+	var ids ='' ;
+	$.each($(':checked[name=del_one]'),function(i,v){	
+	ids += $(v).val()+',' ;
+	});
+	if(!ids){
+		alert('请先选择管理员');
+		return;
+	}
+	alert(ids);
+	ids = ids.slice(0,-1);
+	layer.confirm('确认删除？',function(){
+		$.ajax({
+			'type':'post',
+			'dataType':'json',
+			'data':'ids='+ids,
+			'url':'/index.php/Admin/Article/delAll',
+			'success':function(response){
+				if(response.code!=10000){
+					alert(response.msg);
+					return;
+				}else{
+					window.document.write('删除成功');
+					location.href="/index.php/Admin/Article/index";
+				}
+			}
+		});
+	});
+});
 
-/*分类-删除*/
-function cate_del(obj,id){
-	// console.log(id);return;
+/*资讯-添加*/
+function article_add(title,url,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*资讯-编辑*/
+function article_edit(title,url,id,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*资讯-删除*/
+function article_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
-			'type': 'POST',
-			'url': '/index.php/Admin/Category/del/',
-			'data':'id='+id,
-			'dataType': 'json',
+			type: 'POST',
+			url: '',
+			dataType: 'json',
 			success: function(data){
-				if (data.code == 10000) {
-					//提示层
-					layer.msg(data.msg);
-				 window.location.reload();
-				}else{
-					//提示层
-					layer.msg(data.msg);
-				}
+				$(obj).parents("tr").remove();
+				layer.msg('已删除!',{icon:1,time:1000});
+			},
+			error:function(data) {
+				console.log(data.msg);
 			},
 		});		
 	});
 }
 
+/*资讯-审核*/
+function article_shenhe(obj,id){
+	layer.confirm('审核文章？', {
+		btn: ['通过','不通过','取消'], 
+		shade: false,
+		closeBtn: 0
+	},
+	function(){
+		$(obj).parents("tr").find(".td-manage").prepend('<a class="c-primary" onClick="article_start(this,id)" href="javascript:;" title="申请上线">申请上线</a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
+		$(obj).remove();
+		layer.msg('已发布', {icon:6,time:1000});
+	},
+	function(){
+		$(obj).parents("tr").find(".td-manage").prepend('<a class="c-primary" onClick="article_shenqing(this,id)" href="javascript:;" title="申请上线">申请上线</a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-danger radius">未通过</span>');
+		$(obj).remove();
+    	layer.msg('未通过', {icon:5,time:1000});
+	});	
+}
+/*资讯-下架*/
+function article_stop(obj,id){
+	layer.confirm('确认要下架吗？',function(index){
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="article_start(this,id)" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已下架</span>');
+		$(obj).remove();
+		layer.msg('已下架!',{icon: 5,time:1000});
+	});
+}
+
+/*资讯-发布*/
+function article_start(obj,id){
+	layer.confirm('确认要发布吗？',function(index){
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="article_stop(this,id)" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
+		$(obj).remove();
+		layer.msg('已发布!',{icon: 6,time:1000});
+	});
+}
+/*资讯-申请上线*/
+function article_shenqing(obj,id){
+	$(obj).parents("tr").find(".td-status").html('<span class="label label-default radius">待审核</span>');
+	$(obj).parents("tr").find(".td-manage").html("");
+	layer.msg('已提交申请，耐心等待审核!', {icon: 1,time:2000});
+}
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

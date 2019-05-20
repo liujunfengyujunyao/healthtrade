@@ -1,5 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit();?>﻿
-<!--_meta 作为公共模版分离出去-->
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -25,7 +24,7 @@
 <script>DD_belatedPNG.fix('*');</script><![endif]-->
 <!--/meta 作为公共模版分离出去-->
 
-<title>商品列表 - 商品管理 - Healthtrade后台</title>
+<title>角色管理 - 管理员管理 - Healthtrade后台</title>
 <meta name="keywords" content="H-ui.admin v3.0,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.0，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
@@ -94,49 +93,42 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
-	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i>首页
-		<span class="c-gray en">&gt;</span>
-		分类管理
-		<span class="c-gray en">&gt;</span>
-		分类列表
-		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
-	</nav>
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 角色管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="Hui-article">
 		<article class="cl pd-20">
-			<div class="cl pd-5 bg-1 bk-gray mt-20">
-				<span class="l">
-				<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
-				<a class="btn btn-primary radius" data-title="添加商品" _href="add.html" href="/index.php/Admin/Category/add"><i class="Hui-iconfont">&#xe600;</i> 添加分类</a>
-				</span>
-				<span class="r">共有数据：<strong><?php echo ($row); ?></strong> 条</span>
+		
+			<div class="cl pd-5 bg-1 bk-gray"> <span class="l"> <a href="#" class="btn btn-danger radius" id="delAll"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" href="/index.php/Admin/Role/add" onclick=""><i class="Hui-iconfont">&#xe600;</i> 添加角色</a> </span> <span class="r"></div>
+			<div class="mt-10">
+			<table class="table table-border table-bordered table-hover table-bg table-sort">
+				<thead>
+					<tr>
+						<th scope="col" colspan="6">角色管理</th>
+					</tr>
+					<tr class="text-c">
+						<th width="25"><input type="checkbox" value="" name=""></th>
+						<th width="40">ID</th>
+						<th width="200">角色名</th>
+						<th>用户列表</th>
+						<th width="300">描述</th>
+						<th width="70">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php if(is_array($data)): $k = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vol): $mod = ($k % 2 );++$k;?><tr class="text-c">
+						<td><input type="checkbox" value="<?php echo ($vol["role_id"]); ?>" name="del_one" ></td>
+						<td><?php echo ($vol["role_id"]); ?></td>
+						<td><?php echo ($vol["role_name"]); ?></td>
+						<td><a href="#"><?php echo ($username[$vol['role_id']]); ?></a></td>
+						<td><?php echo ($vol["role_auth_ac"]); ?></td>
+						<td class="f-14"><a title="编辑" href="/index.php/Admin/Role/edit/role_id/<?php echo ($vol["role_id"]); ?>" onclick="" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="#" onclick="if(confirm('确认删除？')) location.href='/index.php/Admin/Role/del/role_id/<?php echo ($vol["role_id"]); ?>'"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+				</tbody>
+			</table>
 			</div>
-			<div class="mt-20">
-				<table class="table table-border table-bordered table-bg table-hover table-sort">
-					<thead>
-						<tr class="text-c">
-							<th width="25"><input type="checkbox" name="" value=""></th>
-							<th width="60">ID</th>
-							<th width="80">分类名称</th>
-							<th width="120">操作</th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr class="text-c">
-							<td><input type="checkbox" value="" name=""></td>
-							<td><?php echo ($v["id"]); ?></td>
-							<td class="text-l"><a href="javascript:;" ><center><b><?php echo ($v["cate_name"]); ?></b></center></a></td>
-							<td class="f-14 td-manage">
-								<a style="text-decoration:none" class="ml-5" href="/index.php/Admin/Category/edit/id/<?php echo ($v["id"]); ?>" title="商品编辑"><i class="Hui-iconfont">&#xe6df;编辑</i></a>
-								<a style="text-decoration:none" class="ml-5" onClick="cate_del(this,'<?php echo ($v["id"]); ?>')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;删除</i></a>
-								</td>
-						</tr><?php endforeach; endif; else: echo "" ;endif; ?>
-					</tbody>
-				</table>
-			</div>
+			
 		</article>
 	</div>
 </section>
-
 
 <!--_footer 作为公共模版分离出去-->
 
@@ -156,38 +148,69 @@
 <script type="text/javascript" src="/Public/Admin/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="/Public/Admin/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
-$('.table-sort').dataTable({
-	"aaSorting": [[ 1, "asc" ]],//默认第几个排序
-	"bStateSave": true,//状态保存
-	"aoColumnDefs": [
-		// {"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-		{"orderable":false,"aTargets":[0,3]}// 不参与排序的列
-	]
-});
 
-/*分类-删除*/
-function cate_del(obj,id){
-	// console.log(id);return;
-	layer.confirm('确认要删除吗？',function(index){
-		$.ajax({
-			'type': 'POST',
-			'url': '/index.php/Admin/Category/del/',
-			'data':'id='+id,
-			'dataType': 'json',
-			success: function(data){
-				if (data.code == 10000) {
-					//提示层
-					layer.msg(data.msg);
-				 window.location.reload();
-				}else{
-					//提示层
-					layer.msg(data.msg);
-				}
-			},
-		});		
+/*管理员-角色-添加*/
+function admin_role_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+/*管理员-角色-编辑*/
+function admin_role_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*管理员-角色-删除*/
+function admin_role_del(obj,id){
+	layer.confirm('角色删除须谨慎，确认要删除吗？',function(index){
+		//此处请求后台程序，下方是成功后的前台处理……
+		
+		
+		$(obj).parents("tr").remove();
+		layer.msg('已删除!',{icon:1,time:1000});
 	});
 }
+// function delAll(){
+//  if(window.confirm("确认要批量删除吗?")){
+// 	$('#shanchuyidui'); //表单提交的一种js方法 ,其中form是表单的
+//  }
+// }
+$('.table-sort').dataTable({
+	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+	"bStateSave": true,//状态保存
+	"aoColumnDefs": [
+		//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		// {"orderable":false,"aTargets":[0,8]}// 不参与排序的列
+	]
+});
+$(function(){
+	$('#delAll').click(function(){
+		var ids ='' ;
+		$.each($(':checked[name=del_one]'),function(i,v){	
+		ids += $(v).val()+',' ;
 
+		});
+		if(!ids){
+			alert('请先选择要删除的角色');
+			return;
+		}
+		ids = ids.slice(0,-1);
+		layer.confirm('确认删除？',function(){
+			$.ajax({
+				'type':'post',
+				'dataType':'json',
+				'data':'ids='+ids,
+				'url':'/index.php/Admin/Role/delAll',
+				'success':function(response){
+					if(response.code!=10000){
+						alert(response.msg);
+						return;
+					}else{
+						window.document.write('删除成功');
+						location.href="/index.php/Admin/Role/index";
+					}
+				}
+			});
+		});
+	});
+});
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

@@ -68,7 +68,7 @@ class ManagerController extends CommonController{
 	// 	$data=D('Manager')->select();
 	// 	$this->assign('data',$data);
 	// 	$this->display();
-	}
+//	}
 	public function delAll(){
 		$ids = I('post.ids');
 		$res = D('Manager')->where("id in ({$ids})")->delete();
