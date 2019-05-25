@@ -32,7 +32,7 @@
 <!--_header 作为公共模版分离出去-->
 <header class="navbar-wrapper">
 	<div class="navbar navbar-fixed-top">
-		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">D I A M O N D</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a> <span class="logo navbar-slogan f-l mr-10 hidden-xs"></span> <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">Healthtrade</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a> <span class="logo navbar-slogan f-l mr-10 hidden-xs"></span> <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 			<nav class="nav navbar-nav">
 				<ul class="cl">
 					<li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
@@ -148,8 +148,9 @@
 		</div>
 
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">缩略图：</label>
+			<label class="form-label col-xs-4 col-sm-2">缩略图</label>
 					<input type="file" name="goods_big_img" id="">
+					<img src="http://192.168.3.1:8888<?php echo ($data["goods_small_img"]); ?>">
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">商品简介：</label>

@@ -1,0 +1,12 @@
+[ 2019-05-26T01:54:16+08:00 ] 192.168.3.1 /index.php/Admin/Goods/edit/id/5
+ERR: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 
+
+[ 2019-05-26T01:54:27+08:00 ] 192.168.3.1 /index.php/Admin/Goods/edit/id/5
+ERR: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 
+
+[ 2019-05-26T01:55:18+08:00 ] 192.168.3.1 /index.php/Admin/Goods/edit/id/5
+ERR: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 
+
+[ 2019-05-26T01:55:25+08:00 ] 192.168.3.1 /index.php/Admin/Goods/edit/id/5
+ERR: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 
+

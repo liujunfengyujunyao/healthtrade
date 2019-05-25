@@ -101,7 +101,7 @@ class GoodsModel extends Model{
 			//上传失败返回 false
 			return false;
 		}
-
+// dump($res_upload);die;
 		//遍历数组 生成 不同大小的缩略图
 		foreach ($res_upload as $k => $v) {
 			//把每一个上传文件 保存到项目目录
@@ -132,7 +132,7 @@ class GoodsModel extends Model{
 			$image->save(ROOT_PATH.$pics_sma);
 
 			//将图片添加到相册表
-			$row=array(
+			$row[$k]=array(
 				'goods_id' => $goods_id,
 				'pics_origin' => $origin,
 				'pics_big' => $pics_big,
@@ -141,8 +141,9 @@ class GoodsModel extends Model{
 			);
 
 		}
+		
 			//实例化 Goodspics 模型类 关联 goodspics 数据表 完成添加数据
-			D('Goodspics')->add($row);
+			D('Goodspics')->addAll($row);
 			//设置缩略图成功 返回 结果
 			return true;
 

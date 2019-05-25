@@ -14,13 +14,14 @@ class IndexController extends CommonController {
     public function detail(){
         //从地址栏获取商品id
         $id = I('get.id');
-        // dump($id);die;
+   
         //商品表和系列表联合查询
         $goods = D('goods')->alias('t1')->field('t1.*,t2.series_conception')->join(
             'left join he_series as t2 on t2.id=t1.series_id')->where("t1.id={$id}")->find();
         $this->assign('goods',$goods);
         //查询商品属性
         $attr = D('GoodsAttr')->where(["goods_id"=>$id])->select();
+        dump($attr);die;
         $attr_v=array();
         //遍历输出属性值
         foreach($attr as $k=>$v){

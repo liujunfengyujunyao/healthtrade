@@ -22,12 +22,13 @@ class GoodsController extends Controller{
 		//判断是否是POST提交
 		if(IS_POST) {
 			$data=I('post.');
-
+			
 			//单独接收商品简介goods_introduce 防范xss攻击
 			$data['goods_introduce']=I('post.goods_introduce','','htmlspecialchars');
 			// dump($_FILES);
 			//实例化商品类
 			$model=D('Goods');
+			
 
 			//上传单文件
 			$upload_res=$model->upload_One($_FILES['goods_big_img'],$data);
